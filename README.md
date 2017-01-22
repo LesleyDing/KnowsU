@@ -17,3 +17,5 @@ A NodeJS app that uses IBM Watson to analyze users' emotion through text with ot
 
 ### Front-end Framework
 1. Semantics-UI
+2. Hover.css
+3. Animate.css
