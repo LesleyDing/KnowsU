@@ -1,10 +1,11 @@
 {
-  "name": "watson",
+  "name": "knowsu",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +13,9 @@
     "async": "^2.1.4",
     "body-parser": "^1.16.0",
     "ejs": "^2.5.5",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "google-books-search": "^0.3.1",
+    "request": "^2.79.0",
+    "watson-developer-cloud": "^2.15.2"
   }
 }

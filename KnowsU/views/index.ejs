@@ -27,7 +27,7 @@
         
         <div class="ui inverted divider"></div>
         <div class="ui huge header">Movie recommended:</div>
-        <div class="ui three column grid" id="music-recommend">
+        <div class="ui three column grid" id="movie-recommend">
             <% for (var i = 0; i < 6; i++) { %>
                 <div class="column">
                     <div class="ui fluid card">
@@ -42,6 +42,22 @@
             <% } %>
         </div>
         
+        <div class="ui inverted divider"></div>
+        <div class="ui huge header">Books recommended:</div>
+        <div class="ui three column grid" id="book-recommend">
+            <% for (var i = 0; i < 6; i++) { %>
+                <div class="column">
+                    <div class="ui fluid card">
+                      <div class="image">
+                        <img src="<%= data3[i]["thumbnail"] %>">
+                      </div>
+                      <div class="content">
+                        <a class="header" href="<%= data3[i]["link"]%>" target="_blank"><%= data3[i]["title"].substring(0, 15)%>...</a>
+                      </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
         
     </div>
 

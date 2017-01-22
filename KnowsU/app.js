@@ -3,7 +3,7 @@ var express = require("express");
 var app = express();
 var bodyParser  = require("body-parser");
 var request = require("request");
-var async = require("async");
+var books = require('google-books-search');
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 
 // set view engine
@@ -35,10 +35,12 @@ var first, inverse, min;
 app.post("/index", function(req, res){
   tone_analyzer.tone({ text: req.body.text }, function(err, tone) {
     if (err) {
+      // error handling for the tone analyzer
       console.log(err);
       res.redirect("/new");
     }
     else {
+      // read data from the response and determinter the maximum tone percentage
       var data = JSON.parse(JSON.stringify(tone.document_tone.tone_categories[0].tones, null, 2));
       min = 0;
       data.forEach(function(tone){
@@ -48,6 +50,7 @@ app.post("/index", function(req, res){
         }
       })
       
+      // determine the minimum percentage to help assist giving recommendation
       var max = 1;
       data.forEach(function(tone){
         if (tone['score'] < max) {
@@ -55,13 +58,13 @@ app.post("/index", function(req, res){
           max = tone['score'];
         }
       })
-      
-console.log(inverse);
+      // redirect the website to index after making a get request
       res.redirect("/index");
     }
   });
 });
 
+// a getRandom function to get a random number between 0 to 2
 function getRandom() {
   return Math.floor(Math.random() * 3);
 }
@@ -104,7 +107,14 @@ app.get("/index", function(req, res){
           parsedData = JSON.parse(body);
           var movieData = parsedData["Search"]
           
-          res.render("index", {first: first, score: Math.floor(min * 100), data: albumData, data2: movieData});
+          books.search(query, function(error, results) {
+            if (!error) {
+              console.log(results);
+              res.render("index", {first: first, score: Math.floor(min * 100), data: albumData, data2: movieData, data3: results});
+            } else {
+              console.log(error);
+              }
+          });
         }
       });
     }
