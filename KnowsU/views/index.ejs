@@ -1,19 +1,24 @@
 <% include ./partials/header%>
     
     <div class="ui main text container">
-        <div class="ui huge header">Your highest sentiment percentage:</div>
+        <div class="animated bounceInDown ui huge header">Your highest sentiment percentage:</div>
         <div class="ui top attached">
-            <div class="item" style="font-size:130%; color:#e67e22;">
+            <div class="animated fadeIn item" style="font-size:130%; color:#e67e22;">
+              <% if (score !== 0) {%>
                 <i class="signal icon"></i><strong><%= first %>: <%= score %>%</strong>
+              <% } %>
+              <% if (score === 0) {%>
+                <i class="signal icon"></i><strong>You have very good emotion state!</strong>
+              <% } %>
             </div>
         </div>
 
         <div class="ui inverted divider"></div>
-        <div class="ui huge header">Music recommended:</div>
-        <div class="ui three column grid" id="music-recommend">
+        <div class="animated fadeIn ui huge header">Music recommended:</div>
+        <div class="animated bounceInUp ui three column grid" id="music-recommend">
             <% data.forEach(function(album, i) { %>
             <div class="column">
-                <div class="ui fluid card">
+                <div class="ui fluid card hvr-bob hvr-round-corners hvr-float-shadow">
                   <div class="image">
                     <img src="<%= data[i]["images"][1]["url"]%>">
                   </div>
@@ -26,11 +31,11 @@
         </div>
         
         <div class="ui inverted divider"></div>
-        <div class="ui huge header">Movie recommended:</div>
-        <div class="ui three column grid" id="movie-recommend">
+        <div class="animated fadeIn ui huge header">Movie recommended:</div>
+        <div class="animated bounceInUp ui three column grid" id="movie-recommend">
             <% for (var i = 0; i < 6; i++) { %>
                 <div class="column">
-                    <div class="ui fluid card">
+                    <div class="ui fluid card hvr-shrink hvr-shadow">
                       <div class="image">
                         <img src="<%= data2[i]["Poster"] %>">
                       </div>
@@ -47,7 +52,7 @@
         <div class="ui three column grid" id="book-recommend">
             <% for (var i = 0; i < 6; i++) { %>
                 <div class="column">
-                    <div class="ui fluid card">
+                    <div class="ui fluid card hvr-shrink hvr-shadow">
                       <div class="image">
                         <img src="<%= data3[i]["thumbnail"] %>">
                       </div>

@@ -64,17 +64,17 @@ app.post("/index", function(req, res){
   });
 });
 
-// a getRandom function to get a random number between 0 to 2
+// a getRandom function to get a random number between 0 to 4
 function getRandom() {
-  return Math.floor(Math.random() * 3);
+  return Math.floor(Math.random() * 4);
 }
 
 var query = "";
-var sadness = ["sad", "upset", "broken"];
-var joy = ["happy", "fun", "love"];
-var anger = ["safe", "calm", "peace"];
-var fear = ["dangerous", "fire", "safe"]
-var disgust = ["calm", "excited", "interested"];
+var sadness = ["sad", "upset", "broken", "melancholy", "cry"];
+var joy = ["happy", "fun", "peace", "delight", "bliss"];
+var anger = ["safe", "calm", "peace", "pleasure", "relax"];
+var fear = ["dangerous", "fire", "safe", "joy", "ease"]
+var disgust = ["calm", "excited", "interested", "dilicious", "joyful"];
 
 function getQuery() {
 	if (first == "sadness")
