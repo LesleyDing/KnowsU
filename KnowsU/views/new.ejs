@@ -1,0 +1,14 @@
+<% include ./partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">New KnowsU Input</div>
+    <form class="ui form" action="/index" method="POST">
+        <div class="field">
+            <label>Your Input Text Content</label>
+            <textarea name="text" placeholder="Write Something to Test What Watson Might Recommend You to See!"></textarea>
+        </div>
+        <input class="ui orange button" type="submit">
+    </form>
+</div>
+
+<% include ./partials/footer %>
